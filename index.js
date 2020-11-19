@@ -7,5 +7,9 @@ fs.readFile(path, 'utf8', (err, data) => {
   if (err) core.setFailed(err.message)
 
   const out = data.match(/set\s*\(\s*BLOCK\s+(\w+)\s*\)/i).groups[0]
-  if (out) core.setOutput('block-name', out) else core.setFailed('no match')
+  if (out) {
+    core.setOutput('block-name', out)
+  } else {
+    core.setFailed('no match')
+  }
 })
