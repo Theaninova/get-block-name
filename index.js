@@ -1,12 +1,16 @@
 const core = require('@actions/core')
 const fs = require('fs')
+const path = require("path")
 
 
-const path = core.getInput('cmake-path')
-fs.readFile(path, 'utf8', (err, data) => {
-  if (err) core.setFailed(err.message)
+const cmake_path = path.resolve(/*core.getInput('cmake-path')*/'CMakeLists.txt')
+fs.readFile(cmake_path, 'utf8', (err, data) => {
+  if (err) {
+    core.setFailed(err.message)
+    return
+  }
 
-  const out = data.match(/set\s*\(\s*BLOCK\s+(\w+)\s*\)/i).groups[0]
+  const out = data.match(/set\s*\(\s*BLOCK\s+(\w+)\s*\)/i)[1]
   if (out) {
     core.setOutput('block-name', out)
   } else {
