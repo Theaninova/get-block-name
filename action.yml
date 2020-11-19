@@ -1,0 +1,13 @@
+name: 'Get Block Name'
+description: 'Get RNVS Block Name from CMakeLists.txt'
+inputs:
+  cmake-path:
+    description: 'CMakeLists.txt path'
+    required: true
+    default: './CMakeLists.txt'
+outputs:
+  block-name:
+    description: 'The name or number of the block'
+runs:
+  using: 'node12'
+  main: 'index.js'
