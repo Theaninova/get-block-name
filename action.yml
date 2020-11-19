@@ -1,5 +1,8 @@
 name: 'Get Block Name'
 description: 'Get RNVS Block Name from CMakeLists.txt'
+branding:
+  icon: search
+  color: black
 inputs:
   cmake-path:
     description: 'CMakeLists.txt path'
